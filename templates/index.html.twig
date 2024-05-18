@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Todo application</title>
+{{ importmap('app') }}
 
-{% block body %}
-    {{ component('TodoList') }}
-{% endblock %}
+{{ component('TodoList') }}
