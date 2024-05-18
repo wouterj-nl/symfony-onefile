@@ -1,20 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <form method="POST" action="{{ path('add_todo') }}">
-        <input type="text" name="task">
-        <button type="submit">Add</button>
-    </form>
-
-    <ul>
-        {% for todo in todos %}
-            <li>
-                {{ todo.task }}
-
-                <form method="POST" action="{{ path('delete_todo', { id: todo.id }) }}">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+    {{ component('TodoList') }}
 {% endblock %}

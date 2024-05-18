@@ -16,7 +16,10 @@ class Kernel extends BaseKernel
 
     private function configureContainer(ContainerConfigurator $container, LoaderInterface $loader, ContainerBuilder $builder): void
     {
-        $container->extension('framework', ['secret' => env('APP_SECRET')]);
+        $container->extension('framework', [
+            'secret' => env('APP_SECRET'),
+            'asset_mapper' => ['paths' => ['assets/']],
+        ]);
 
         $container->extension('doctrine', [
             'dbal' => ['url' => env('DATABASE_URL')->resolve()],
@@ -52,6 +55,7 @@ class Kernel extends BaseKernel
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Bundle\TwigBundle\TwigBundle(),
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Symfony\UX\StimulusBundle\StimulusBundle(),
             new \Symfony\UX\TwigComponent\TwigComponentBundle(),
             new \Symfony\UX\LiveComponent\LiveComponentBundle(),
         ];

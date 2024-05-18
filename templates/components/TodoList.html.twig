@@ -1,0 +1,20 @@
+<div {{ attributes }}>
+    <form data-action="live#action:prevent" data-live-action-param="addTodo">
+        <input type="text" data-model="task">
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for todo in this.todos %}
+            <li>
+                {{ todo.task }}
+
+                <button
+                    data-action="live#action"
+                    data-live-action-param="deleteTodo"
+                    data-live-id-param="{{ todo.id }}"
+                >Delete</button>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
