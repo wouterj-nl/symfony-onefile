@@ -6,13 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Twig\Environment;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\{env, param};
 
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
+
+    #[Route('/')]
+    public function index(Environment $twig): Response
+    {
+        return new Response($twig->render('index.html.twig'));
+    }
 
     private function configureContainer(ContainerConfigurator $container, LoaderInterface $loader, ContainerBuilder $builder): void
     {
@@ -42,11 +51,7 @@ class Kernel extends BaseKernel
     private function configureRoutes(RoutingConfigurator $routes): void
     {
         $routes->import('@LiveComponentBundle/config/routes.php')->prefix('/_components');
-
-        $routes->import([
-            'path' => __DIR__.'/Controller',
-            'namespace' => 'App\\Controller',
-        ], type: 'attribute');
+        $routes->import(__FILE__, 'attribute');
     }
 
     public function registerBundles(): iterable
