@@ -59,6 +59,7 @@ class Kernel extends BaseKernel
             new \Symfony\UX\StimulusBundle\StimulusBundle(),
             new \Symfony\UX\TwigComponent\TwigComponentBundle(),
             new \Symfony\UX\LiveComponent\LiveComponentBundle(),
+            new \Symfony\UX\Icons\UXIconsBundle(),
         ];
     }
 }

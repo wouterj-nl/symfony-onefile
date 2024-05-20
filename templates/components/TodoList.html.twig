@@ -1,19 +1,23 @@
 <div {{ attributes }}>
-    <form data-action="live#action:prevent" data-live-action-param="addTodo">
-        <input type="text" data-model="task">
-        <button type="submit">Add</button>
+    <form data-action="live#action:prevent" data-live-action-param="addTodo" class="mb-3">
+        <div class="input-group">
+            <input type="text" data-model="task" placeholder="What should you do?" class="form-control">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
     </form>
 
-    <ul>
+    <ul class="list-group">
         {% for todo in this.todos %}
-            <li>
+            <li class="list-group-item">
                 {{ todo.task }}
 
-                <button
-                    data-action="live#action"
-                    data-live-action-param="deleteTodo"
-                    data-live-id-param="{{ todo.id }}"
-                >Delete</button>
+                <span class="float-end">
+                    <button class="btn btn-sm btn-danger"
+                        data-action="live#action"
+                        data-live-action-param="deleteTodo"
+                        data-live-id-param="{{ todo.id }}"
+                    >{{ ux_icon('material-symbols:delete-outline') }}</button>
+                </span>
             </li>
         {% endfor %}
     </ul>
