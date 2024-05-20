@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Component;
+namespace App;
 
-use App\Entity\Todo;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\UX\LiveComponent\Attribute\{AsLiveComponent, LiveAction, LiveArg, LiveProp};
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent]
+#[AsLiveComponent(template: 'TodoList.html.twig')]
 class TodoList
 {
     use DefaultActionTrait;

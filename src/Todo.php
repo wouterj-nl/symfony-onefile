@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App;
 
 use Doctrine\ORM\Mapping\{Entity, Column, Id, GeneratedValue};
 

@@ -28,8 +28,8 @@ class Kernel extends BaseKernel
             'orm' => [
                 'mappings' => [
                     'App' => [
-                        'dir' => param('kernel.project_dir').'/src/Entity',
-                        'prefix' => 'App\\Entity\\',
+                        'dir' => __DIR__,
+                        'prefix' => __NAMESPACE__,
                     ],
                 ],
             ],
@@ -37,7 +37,7 @@ class Kernel extends BaseKernel
 
         $container->services()
             ->defaults()->autowire()->autoconfigure()
-            ->load('App\\', __DIR__)->exclude([__FILE__, __DIR__.'/Entity/'])
+            ->load('App\\', __DIR__)->exclude([__FILE__])
         ;
     }
 
