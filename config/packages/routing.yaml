@@ -1,3 +1,0 @@
-framework:
-    router:
-        default_uri: '%env(DEFAULT_URI)%'

@@ -1,3 +1,0 @@
-framework:
-    secret: '%env(APP_SECRET)%'
-    session: true
